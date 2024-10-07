@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gestion_Del_Presupuesto</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/Gestion_Del_Presupuesto.styles.css" asp-append-version="true" />
+    <style>
+        /* Estilo para el sidebar */
+        .sidebar {
+            height: calc(100vh - 56px); /* Altura ajustada para no incluir el navbar */
+            position: fixed;
+            top: 56px; /* Alinear debajo del navbar */
+            left: 0;
+            width: 300px;
+            background-color: #0d47a1; /* Color azul del navbar aplicado al sidebar */
+            padding-top: 20px;
+            color: white;
+        }
+
+            .sidebar .nav-link {
+                color: #e0e0e0;
+                margin-bottom: 10px;
+            }
+
+                .sidebar .nav-link:hover {
+                    background-color: #2b4b75;
+                    color: #ffffff;
+                }
+
+            /* Estilo para los menús desplegables */
+            .sidebar .nav-item .dropdown-menu {
+                position: absolute;
+                left: 300px;
+                top: 0;
+                z-index: 1000;
+                background-color: #2b4b75; /* Ajuste de color del menú desplegable */
+                margin-top: -10px;
+            }
+
+            .sidebar .dropdown-item {
+                color: #e0e0e0;
+            }
+
+                .sidebar .dropdown-item:hover {
+                    background-color: #4a5f7a;
+                    color: #ffffff;
+                }
+
+        /* Ajuste del contenido principal */
+        .content {
+            margin-left: 310px;
+            padding: 20px;
+        }
+
+        /* Estilo de la imagen del logo */
+        .sidebar .logo-container {
+            text-align: center;
+            padding: 10px;
+            background-color: transparent; /* Fondo transparente */
+        }
+
+            .sidebar .logo-container img {
+                max-width: 50%; /* Ajustar al contenedor */
+                height: auto;
+                background-color: transparent; /* Fondo transparente para la imagen */
+                margin: 0 auto;
+            }
+
+        /* Estilo del navbar */
+        .navbar {
+            width: 100%;
+            background-color: #24324a; /* Color del sidebar aplicado al navbar */
+            color: #ffffff;
+        }
+
+        .navbar-brand {
+            color: #ffffff;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ffffff !important;
+        }
+
+        .navbar .nav-item .nav-link:hover {
+            color: #cccccc !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar superior -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Gestión de Campos Clínicos Universidad Central</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Login">Iniciar Sesión</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Account" asp-action="Register">Registrarse</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Contenedor para la imagen -->
+        <div class="logo-container">
+            <img src="~/images/ucn_logo.jpg" alt="Logo Universidad Central" />
+        </div>
+        <h4 class="text-white text-center">Gestion_Del_Presupuesto</h4>
+        <ul class="nav flex-column">
+            <!-- Opciones del sidebar -->
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Auditoria" asp-action="Historial">Auditoria</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="campoClinicoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Campo Clínico
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="campoClinicoDropdown">
+                    <li><a class="dropdown-item" asp-controller="Campo_Clinico" asp-action="Index">Ver Campos Clínicos</a></li>
+                    <li><a class="dropdown-item" asp-controller="Campo_Clinico" asp-action="Create">Registrar Campo Clínico</a></li>
+                </ul>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="Centro_CostoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Centro de Costos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="Centro_CostoDropdown">
+                    <li><a class="dropdown-item" asp-controller="Centro_Costo" asp-action="Index">Ver Centro de Costos</a></li>
+                    <li><a class="dropdown-item" asp-controller="Centro_Costo" asp-action="Edit">Editar Centro de Costos</a></li>
+                    <li><a class="dropdown-item" asp-controller="Centro_Costo" asp-action="Delete">Eliminar Centro de Costos</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Convenios" asp-action="Index">Convenios</a>
+            </li>
+            <!-- Nuevas vistas añadidas -->
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Dashboard" asp-action="Index">Dashboard</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="DevengadosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Devengados
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="DevengadosDropdown">
+                    <li><a class="dropdown-item" asp-controller="Devengados" asp-action="Index">Ver Devengados</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Facturacion" asp-action="Index">Facturación</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="pagosDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Pagos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="pagosDropdown">
+                    <li><a class="dropdown-item" asp-controller="Pagos" asp-action="Index">Ver Pagos</a></li>
+                    <li><a class="dropdown-item" asp-controller="Pagos" asp-action="Create">Registrar Pago</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="content">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

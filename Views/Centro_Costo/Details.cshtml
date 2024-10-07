@@ -1,0 +1,42 @@
+﻿@model Gestion_Del_Presupuesto.Models.Centro_Costo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Centro_Costo</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PresupuestoAsignado)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PresupuestoAsignado)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Responsable)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Responsable)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id_Presupuesto)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id_Presupuesto)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.Id_Centro_Costo">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

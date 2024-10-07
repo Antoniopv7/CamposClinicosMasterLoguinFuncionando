@@ -1,0 +1,30 @@
+﻿@model Gestion_Del_Presupuesto.Models.LoginViewModel
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<h2>Iniciar Sesión</h2>
+
+<form asp-action="Login" asp-controller="Account" method="post">
+    <h2>Bienvenido(a) a Gestión del Presupuesto De Campos Clínicos</h2>
+    <hr />
+    <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+    <div class="form-floating mb-3">
+        <input asp-for="Email" class="form-control" autocomplete="username" placeholder="name@example.com" />
+        <label asp-for="Email" class="form-label">Email</label>
+        <span asp-validation-for="Email" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Password" class="form-control" autocomplete="current-password" placeholder="password" />
+        <label asp-for="Password" class="form-label">Contraseña</label>
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+    <div>
+        <a asp-controller="Account" asp-action="Register">Registrarse como nuevo Usuario</a> <!-- Cambiado a enlace de controlador -->
+    </div>
+</form>
+
+
+

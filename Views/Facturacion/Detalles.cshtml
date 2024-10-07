@@ -1,0 +1,27 @@
+﻿@model Gestion_Del_Presupuesto.Models.Facturacion
+
+@{
+    ViewData["Title"] = "Detalles de Factura";
+}
+
+<h2>Detalles de la Factura</h2>
+
+<div>
+    <h4>@Model.NumeroFactura</h4>
+    <dl class="dl-horizontal">
+        <dt>Institución</dt>
+        <dd>@Model.Institucion</dd>
+        <dt>Monto</dt>
+        <dd>@Model.Monto</dd>
+        <dt>Fecha de Emisión</dt>
+        <dd>@Model.FechaEmision.ToShortDateString()</dd>
+        <dt>Fecha de Vencimiento</dt>
+        <dd>@Model.FechaVencimiento.ToShortDateString()</dd>
+        <dt>Descripción</dt>
+        <dd>@Model.Descripcion</dd>
+    </dl>
+</div>
+
+<a class="btn btn-primary" href="javascript:window.print()">Imprimir</a>
+<a asp-action="Index" class="btn btn-secondary">Regresar</a>
+

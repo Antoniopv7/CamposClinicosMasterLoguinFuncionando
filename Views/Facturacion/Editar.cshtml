@@ -1,0 +1,32 @@
+﻿@model Gestion_Del_Presupuesto.Models.Facturacion
+
+@{
+    ViewData["Title"] = "Editar Factura";
+}
+
+<h2>Editar Factura</h2>
+
+<form asp-action="Editar">
+    <input type="hidden" asp-for="Id_Facturacion" />
+    <div class="form-group">
+        <label>Número de Factura</label>
+        <input class="form-control" asp-for="NumeroFactura" />
+    </div>
+    <div class="form-group">
+        <label>Institución</label>
+        <input class="form-control" asp-for="Institucion" />
+    </div>
+    <div class="form-group">
+        <label>Monto</label>
+        <input class="form-control" asp-for="Monto" type="number" step="0.01" />
+    </div>
+    <div class="form-group">
+        <label>Fecha de Emisión</label>
+        <input class="form-control" asp-for="FechaEmision" type="date" />
+    </div>
+    <div class="form-group">
+        <label>Fecha de Vencimiento</label>
+        <input class="form-control" asp-for="FechaVencimiento" type="date" />
+    </div>
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+</form>

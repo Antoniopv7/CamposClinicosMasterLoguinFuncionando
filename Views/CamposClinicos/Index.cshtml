@@ -1,0 +1,35 @@
+﻿@model IEnumerable<Gestion_Del_Presupuesto.Models.Campo_Clinico>
+
+@{
+    ViewData["Title"] = "Gestión de Campos Clínicos por Carrera";
+}
+
+<h2>Gestión de Campos Clínicos</h2>
+
+<a class="btn btn-primary" asp-action="Crear">Agregar Nuevo Campo Clínico</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Ubicación</th>
+            <th>Tipo</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Nombre</td>
+                <td>@item.Ubicacion</td>
+                <td>@item.Tipo</td>
+                <td>
+                    <a class="btn btn-info" asp-action="Detalles" asp-route-id="@item.Id_Campo_Clinico">Ver</a>
+                    <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id_Campo_Clinico">Editar</a>
+                    <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.Id_Campo_Clinico">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
